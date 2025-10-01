@@ -4,6 +4,15 @@ A curated collection of my end-to-end Azure demos.
 
 ## 🚀 Projects
 
+- [Avatar Cloud Demo](https://github.com/MkhithiAzureNet/Avatar-Cloud-Demo)  
+  **Tech Stack:** Azure VM (Windows Server), IIS, ASP.NET, Azure SQL Database, PowerShell  
+  **Key Results:**  
+  - Deployed IIS-hosted ASP.NET app connected to Azure SQL Database  
+  - Implemented logging, monitoring, and diagnostics for SQL queries  
+  - Hardened access with scoped firewall rules and NSGs  
+  - Optimized costs with VM auto-shutdown and SQL tier right-sizing
+
+
 - [Azure Landing Zone Lite](https://github.com/MkhithiAzureNet/azure-landing-zone-lite)  
   Hub-spoke networking with Bicep templates, peerings, and governance.
   **Tech Stack:** Azure Bicep, Hub-Spoke Networking, Management Groups, Policy, RBAC  
@@ -34,10 +43,5 @@ A curated collection of my end-to-end Azure demos.
   - Automate DR drills to save 20+ hours/month in manual testing 
 
 
-
-
-
-- [Future Project: AKS Demo](https://github.com/YourUser/aks-demo)  
-  Kubernetes cluster with CI/CD pipeline and monitoring.
 
 

@@ -76,3 +76,8 @@ az deployment group create \
   --resource-group rg-my-avatar-spoke \
   --template-file ./templates/vm/linux-vm.bicep \
   --parameters vmName=avatarlinux adminUsername=azureuser sshPublicKey="$(cat ~/.ssh/id_rsa.pub)"
+
+  az deployment group create \
+  --resource-group rg-my-avatar-spoke \
+  --template-file ./templates/vm/linux-vmss.bicep \
+  --parameters vmssName=avatarlinuxss adminUsername=azureuser sshPublicKey="$(cat ~/.ssh/id_rsa.pub)" instanceCount=3

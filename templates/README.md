@@ -71,3 +71,8 @@ az deployment group create \
   --resource-group <rg-name> \
   --template-file ./templates/<path-to-template>.bicep \
   --parameters <param1>=<value1> <param2>=<value2>
+
+  az deployment group create \
+  --resource-group rg-my-avatar-spoke \
+  --template-file ./templates/vm/linux-vm.bicep \
+  --parameters vmName=avatarlinux adminUsername=azureuser sshPublicKey="$(cat ~/.ssh/id_rsa.pub)"

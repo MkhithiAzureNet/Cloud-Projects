@@ -64,7 +64,7 @@ They are designed to be modular, parameterized, and ready for rapid deployment i
 
 ---
 
-## 🔧 Deployment Command (generic)
+## 🔧 Deployment Command 
 Run any template with:
 ```bash
 az deployment group create \
@@ -81,3 +81,13 @@ az deployment group create \
   --resource-group rg-my-avatar-spoke \
   --template-file ./templates/vm/linux-vmss.bicep \
   --parameters vmssName=avatarlinuxss adminUsername=azureuser sshPublicKey="$(cat ~/.ssh/id_rsa.pub)" instanceCount=3
+
+  az deployment group create \
+  --resource-group rg-my-avatar-spoke \
+  --template-file ./templates/vm/linux-vmss-lb.bicep \
+  --parameters vmssName=avatarlinuxss adminUsername=azureuser sshPublicKey="$(cat ~/.ssh/id_rsa.pub)" instanceCount=3
+
+  az deployment group create \
+  --resource-group rg-my-avatar-spoke \
+  --template-file ./templates/app/webapp-sql.bicep \
+  --parameters webAppName=avatarweb hostingPlanName=avatarplan sqlServerName=avatarsql sqlDbName=appdb adminUsername=sqladmin adminPassword=YourP@ssword123

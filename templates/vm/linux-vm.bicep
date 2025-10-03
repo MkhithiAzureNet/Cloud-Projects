@@ -2,7 +2,7 @@
 param vmName string = 'demo-linux-vm'
 
 @description('Admin username for the VM')
-param adminUsername string = 'Nhlanhla'
+param adminUsername string = 'nhlanhla'
 
 @secure()
 @description('SSH public key for authentication')
@@ -86,7 +86,7 @@ resource vm 'Microsoft.Compute/virtualMachines@2023-09-01' = {
   }
   tags: {
     env: 'demo'
-    owner: 'Nhlanhla'
+    owner: 'nhlanhla'
     role: 'app'
   }
 }

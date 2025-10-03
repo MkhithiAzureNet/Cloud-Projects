@@ -1,8 +1,21 @@
+@description('Name of the Linux VM')
 param vmName string = 'demo-linux-vm'
-param adminUsername string = 'azureuser'
+
+@description('Admin username for the VM')
+param adminUsername string = 'Nhlanhla'
+
 @secure()
+@description('SSH public key for authentication')
 param sshPublicKey string
-param location string = resourceGroup().location
+
+@description('Deployment location')
+param location string = 'southafricanorth'
+
+@description('Existing VNet name')
+param vnetName string = 'spinning-spoke-net-vnet-01'
+
+@description('Subnet name for the VM NIC')
+param subnetName string = 'app-subnet'
 
 resource nic 'Microsoft.Network/networkInterfaces@2023-05-01' = {
   name: '${vmName}-nic'
@@ -14,11 +27,16 @@ resource nic 'Microsoft.Network/networkInterfaces@2023-05-01' = {
         properties: {
           privateIPAllocationMethod: 'Dynamic'
           subnet: {
-            id: resourceId('Microsoft.Network/virtualNetworks/subnets', 'demo-vnet', 'default')
+            id: resourceId('Microsoft.Network/virtualNetworks/subnets', vnetName, subnetName)
           }
         }
       }
     ]
+  }
+  tags: {
+    env: 'demo'
+    owner: 'Nhlanhla'
+    role: 'app'
   }
 }
 
@@ -53,6 +71,9 @@ resource vm 'Microsoft.Compute/virtualMachines@2023-09-01' = {
       }
       osDisk: {
         createOption: 'FromImage'
+        managedDisk: {
+          storageAccountType: 'StandardSSD_LRS'
+        }
       }
     }
     networkProfile: {
@@ -62,5 +83,10 @@ resource vm 'Microsoft.Compute/virtualMachines@2023-09-01' = {
         }
       ]
     }
+  }
+  tags: {
+    env: 'demo'
+    owner: 'Nhlanhla'
+    role: 'app'
   }
 }

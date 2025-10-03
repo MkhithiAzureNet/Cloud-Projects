@@ -83,18 +83,4 @@ resource winVm 'Microsoft.Compute/virtualMachines@2023-09-01' = {
   }
 }
 
-/* ---------------- IIS Install Extension ---------------- */
-resource iisExtension 'Microsoft.Compute/virtualMachines/extensions@2022-11-01' = {
-  parent: winVm
-  name: 'IISInstall'
-  location: location
-  properties: {
-    publisher: 'Microsoft.Compute'
-    type: 'CustomScriptExtension'
-    typeHandlerVersion: '1.10'
-    autoUpgradeMinorVersion: true
-    settings: {
-      commandToExecute: 'powershell Add-WindowsFeature Web-Server; echo "IIS Demo Healthy" > C:\\inetpub\\wwwroot\\index.html'
-    }
-  }
-}
+
